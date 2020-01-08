@@ -18,15 +18,21 @@ Traveller.prototype.getJourneysByTransport = function (transport) {
 };
 
 Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
-
+  const result = this.journeys.filter((journey) => journey.distance >= minDistance)
+  return result
 };
 
 Traveller.prototype.calculateTotalDistanceTravelled = function () {
-
+  const result = this.journeys.reduce((runningTotal, journey) => {
+    return runningTotal += journey.distance
+  },0)
+  return result
 };
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
-
+  const transportDuplicated = this.journeys.map((journey) => journey.transport)
+  const result = [...new Set(transportDuplicated)];
+  return result
 };
 
 
